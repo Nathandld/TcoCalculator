@@ -1,7 +1,5 @@
-﻿namespace TcoCalculator.Data
-{
-    public class Class1
-    {
+﻿namespace TcoCalculator.Data;
 
-    }
+public class Class1
+{
 }

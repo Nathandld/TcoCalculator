@@ -1,7 +1,5 @@
-﻿namespace TcoCalculator.Core
-{
-    public class Class1
-    {
+﻿namespace TcoCalculator.Core;
 
-    }
+public class Class1
+{
 }
