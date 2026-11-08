@@ -20,6 +20,11 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
+		<!-- The MAUI template code (block namespaces, platform heads such as AppDelegate)
+		     triggers analyzer warnings we do not own. Warnings stay visible here but do not
+		     fail the build; the strict rule still applies to Core, Data and Tests. -->
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+
 		<!-- Display name -->
 		<ApplicationTitle>TcoCalculator.UI</ApplicationTitle>
 
