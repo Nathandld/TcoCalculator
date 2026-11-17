@@ -101,8 +101,5 @@ jobs:
       - name: Installer le workload MAUI (Windows uniquement)
         run: dotnet workload install maui-windows
 
-      - name: Restore
-        run: dotnet restore TcoCalculator.sln
-
       - name: Build de toute la solution
-        run: dotnet build TcoCalculator.sln -c Release --no-restore
+        run: dotnet build TcoCalculator.sln -c Release
