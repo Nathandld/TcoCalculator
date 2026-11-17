@@ -1,10 +1,9 @@
-﻿namespace TcoCalculator.UI
+﻿namespace TcoCalculator.UI;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
