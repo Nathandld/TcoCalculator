@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\TcoCalculator.Core\TcoCalculator.Core.csproj" />
+    <ProjectReference Include="..\..\TcoCalculator.Data\TcoCalculator.Data.csproj" />
   </ItemGroup>
 
 </Project>
