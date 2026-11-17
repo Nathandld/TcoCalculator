@@ -87,3 +87,22 @@ jobs:
 
       - name: Fin de l'analyse et envoi à SonarCloud
         run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+  build-ui:
+    name: Build UI (Windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Installer le workload MAUI (Windows uniquement)
+        run: dotnet workload install maui-windows
+
+      - name: Restore
+        run: dotnet restore TcoCalculator.sln
+
+      - name: Build de toute la solution
+        run: dotnet build TcoCalculator.sln -c Release --no-restore
