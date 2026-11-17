@@ -73,6 +73,8 @@ jobs:
           /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
           /d:sonar.host.url="https://sonarcloud.io"
           /d:sonar.cs.opencover.reportsPaths="coverage/**/coverage.opencover.xml"
+          /d:sonar.exclusions="**/Migrations/**"
+          /d:sonar.coverage.exclusions="**/TcoDbContextFactory.cs"
 
       - name: Build
         run: dotnet build tests/TcoCalculator.Tests/TcoCalculator.Tests.csproj -c Release
@@ -103,3 +105,22 @@ jobs:
 
       - name: Build de toute la solution
         run: dotnet build TcoCalculator.sln -c Release
+
+  migrations:
+    name: EF Core migrations
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restaurer les outils .NET
+        run: dotnet tool restore
+
+      - name: Vérifier qu'aucune migration n'a été oubliée
+        run: >
+          dotnet ef migrations has-pending-model-changes
+          --project TcoCalculator.Data
+          --startup-project TcoCalculator.Data
