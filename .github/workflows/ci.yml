@@ -57,7 +57,7 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - uses: actions/setup-java@v4   # le scanner Sonar tourne sur Java
+      - uses: actions/setup-java@v6   # le scanner Sonar tourne sur Java
         with:
           distribution: temurin
           java-version: '17'
